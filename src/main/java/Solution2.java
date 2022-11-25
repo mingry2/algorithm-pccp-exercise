@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-// 해쉬 - 예산
+// 해쉬 Lv1. 예산
 class Solution2 {
     public int solution(int[] d, int budget) {
         // 배열을 정렬하는 함수(외우기)
