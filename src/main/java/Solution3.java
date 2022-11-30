@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // Integer.toString(정수, 바꿀 진수);를 하면 정수를 바꿀 진수 String 값으로 변환해준다.
 // Integer.toBinaryString-> 2진수로 바꿔주는
-class Solution {
+class Solution3 {
     public String[] solution(int n, int[] arr1, int[] arr2) {
         String[] answer = new String[n];
         // arr1 1번지도와 arr2 2번지도를 |(OR)연산을 통해 합쳐서 벽(#)이 아닌곳을 찾는다.
@@ -27,7 +27,7 @@ class Solution {
         int[] arr1 = new int[]{9, 20, 28, 18, 11};
         int[] arr2 = new int[]{30, 1, 21, 17, 28};
 
-        Solution sl = new Solution();
+        Solution3 sl = new Solution3();
         System.out.print(Arrays.toString(sl.solution(n, arr1, arr2)));
 //        sl.solution(n, arr1, arr2);
     }
