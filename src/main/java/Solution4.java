@@ -23,8 +23,10 @@ class Solution4 {
         if(maxScore==score[1]) scoreList.add(2);
         if(maxScore==score[2]) scoreList.add(3);
 
+        // scoreList의 배열 크기만큼 answer의 배열을 초기화시킨다
         answer = new int[scoreList.size()];
 
+        // scoreList에 있는 숫를 get하여 answer에 넣는다
         for (int i = 0; i < answer.length; i++) {
             answer[i] = scoreList.get(i);
         }
@@ -33,7 +35,7 @@ class Solution4 {
 
     public static void main(String[] args) {
         Solution4 sl = new Solution4();
-        int[] answers = new int[]{1,3,2,4,2};
+        int[] answers = new int[]{1,2,3,4,5};
         System.out.println(Arrays.toString(sl.solution(answers)));
     }
 }

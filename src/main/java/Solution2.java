@@ -1,14 +1,14 @@
 import java.util.Arrays;
 
-// 해쉬 Lv1. 예산
+// 이분탐색 Lv1. 예산
 class Solution2 {
     public int solution(int[] d, int budget) {
         // 배열을 정렬하는 함수(외우기)
         Arrays.sort(d);
 //        System.out.println(Arrays.toString(d));
         // [1, 2, 3, 4, 5]
-        int answer = 0; // 지원가능한 부서 개수 -> count
-        int result = 0;
+        int answer = 0; // 지원가능한 부서 수 -> count
+        int result = 0; // 부서별 요청한 지원금액의 합계
         for (int i = 0; i < d.length; i++) {
             result += d[i];
             if(budget - result >= 0)
