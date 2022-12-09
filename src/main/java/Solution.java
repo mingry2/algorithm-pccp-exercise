@@ -1,39 +1,32 @@
-import java.util.HashMap;
+import java.util.HashSet;
 
-//해시 Lv1 완주하지못한선수
+// 완전탐색 Lv2.소수찾기
 class Solution {
-    public String solution(String[] participant, String[] completion) {
-        String answer = "";
-        // 1. Hash map을 만들어 participant, completion을 넣어준다
-        // -> 순서 x 중복 o
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String player : participant)
-            // value -> 이전에 있던 값에서 하나를 더 증가해서 넣어주고싶음
-            // 중복이 있을 수 있기 때문 이 때, getOrDefault 사용
-            map.put(player, map.getOrDefault(player, 0) + 1);
-//        System.out.println(map);
-        // 2. Hash map을 뺀다(completion)
-        for (String player : completion)
-            // player에 넣을 때 값이 있으면 그 값을 가져오는게 아니라 값에서 -1 한 값을 가져온다.
-            // getOrDefault까지 쓰는게 아니라 get만 사용해서 값에 -1 값 가져오기
-            map.put(player, map.get(player) - 1);
-        // 3. value가 '0'이 아닌 마지막 주자를 찾는다.
-        // .keySet 은 map이 가지고 있는 값들을 하나씩 빼서 map 에 담아주는것
-//        System.out.println(map.keySet());
-        for (String key : map.keySet())
-            if (map.get(key) != 0) {
-                answer = key;
-                // 굳이 끝까지 돌필요없으니까 0인 값이 나오면 끝내버리기 위해 break를 사용
-                break;
-            }
+    HashSet<Integer> numberSet = new HashSet<>();
+    public void recursive(String comb, String others){
+        // 1. 현재 조합을 set에 추가
+        // Integer 형태로 바꿔줌
+        if (!comb.equals("")) // comb 맨처음에 들어왔을 땐 빈스트링이기 때문에 예외처리를 해줌
+            numberSet.add(Integer.valueOf(comb));
+
+        for (int i = 0; i < others.length(); i++) {
+            recursive(comb + others.charAt(i)
+                    , others.substring(0,i) + others.substring(i+1));
+
+        }
+    }
+    public int solution(String numbers) {
+        int answer = 0;
+        // 1. 모든 조합의 숫자를 만든다.
+        recursive("", numbers);
+        System.out.println(numberSet);
         return answer;
     }
 
     public static void main(String[] args) {
-        String[] participant = new String[]{"leo", "kiki", "eden"}; // 마라톤 참가 선수
-        String[] completion = new String[]{"eden", "kiki"}; // 마라톤 완주한 선수
-
         Solution sl = new Solution();
-        System.out.println(sl.solution(participant, completion));
+        String nums = "17";
+        sl.solution(nums);
+
     }
 }
