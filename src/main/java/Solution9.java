@@ -12,6 +12,8 @@ class Solution9 {
         // num의 제곱근까지만 배수를 확인하면됨
         int lim = (int)Math.sqrt(num);
         // 3. 에라토스테네스의 체에 따라 limit까지만 배수 여부를 확인한다.
+        // lim 까지 for문을 돌다가 나눈값이 == 0 이면, 소수가아니라 해당 i의 배수가 되는것 -> false
+        // for문을 다 돌때까지 == 0 이 안나오면 소수인것 -> true
         for (int i = 2; i <= lim; i++) {
             if (num % i == 0)
                 return false;
@@ -22,10 +24,10 @@ class Solution9 {
         // comb : 현재까지 조합한 숫자 , others : 조합하지 않은 남은 숫자
         // 1. 현재 조합을 set에 추가
         // Integer 형태로 바꿔줌
-        if (!comb.equals("")) // comb 맨처음에 들어왔을 땐 빈스트링이기 때문에 예외처리를 해줌
+        if (!comb.equals("")) // comb 맨처음에 들어왔을 땐 빈 문자열이기 때문에 예외처리를 해줌
             numberSet.add(Integer.valueOf(comb)); // valueOf > Integer로 변경
 
-        // 2. 남은 숫자 중 한개를 더 해 새로운 조합을 만든다.
+        // 2. 남은 숫자 중 한개를 더해 새로운 조합을 만든다.
         for (int i = 0; i < others.length(); i++) {
             recursive(comb + others.charAt(i)
                     , others.substring(0,i) + others.substring(i+1));
